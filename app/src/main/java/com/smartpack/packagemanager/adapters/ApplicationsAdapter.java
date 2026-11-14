@@ -96,6 +96,9 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
 
             holder.appName.setText(packageItems.getAppName());
 
+            holder.appIcon.setContentDescription(holder.appIcon.getContext().getString(R.string.select) + ": " + packageItems.getAppName());
+            holder.checkBox.setContentDescription(packageItems.getAppName());
+            holder.open.setContentDescription(holder.open.getContext().getString(R.string.open) + ": " + packageItems.getAppName());
             holder.appIcon.setOnClickListener(v -> {
                 int currentPos = holder.getBindingAdapterPosition();
                 if (currentPos != RecyclerView.NO_POSITION) {

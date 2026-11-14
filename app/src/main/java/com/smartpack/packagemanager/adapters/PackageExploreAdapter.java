@@ -96,6 +96,7 @@ public class PackageExploreAdapter extends RecyclerView.Adapter<PackageExploreAd
             holder.mTitle.setText(new File(this.data.get(position)).getName());
         }
 
+        holder.mExport.setContentDescription(holder.mExport.getContext().getString(R.string.export));
         holder.mExport.setOnClickListener(v -> PackageExplorer.copyToStorage(this.data.get(position), packageName, activity));
 
         AppSettings.setSlideInAnimation(holder.mTitle, position);

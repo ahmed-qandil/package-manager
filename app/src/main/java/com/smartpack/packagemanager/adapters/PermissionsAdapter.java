@@ -63,6 +63,7 @@ public class PermissionsAdapter extends RecyclerView.Adapter<PermissionsAdapter.
         holder.mTitle.setText(permissionsItems.getTitle().replace("android.permission.",""));
         holder.mDescription.setText(permissionsItems.getDescription());
         holder.mGranted.setChecked(permissionsItems.isGranted());
+        holder.mGranted.setContentDescription(permissionsItems.getTitle());
         holder.mGranted.setOnClickListener(v -> {
             if (mRootShell.rootAccess()) {
                 mRootShell.runCommand("pm " + (permissionsItems.isGranted() ? "revoke " : "grant ") +

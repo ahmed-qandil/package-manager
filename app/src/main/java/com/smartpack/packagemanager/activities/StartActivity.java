@@ -40,7 +40,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         LinearLayoutCompat mBottomLayout = findViewById(R.id.layout_bottom);
-        MaterialButton mDocumentation = findViewById(R.id.documentation);
         MaterialButton mStart = findViewById(R.id.start);
         MaterialTextView mMainText = findViewById(R.id.main_text);
         ContentLoadingProgressBar mProgress = findViewById(R.id.progress);
@@ -49,8 +48,6 @@ public class StartActivity extends AppCompatActivity {
             mMainText.setVisibility(View.VISIBLE);
             mBottomLayout.setVisibility(View.VISIBLE);
             mProgress.setVisibility(View.GONE);
-
-            mDocumentation.setOnClickListener(v -> sCommonUtils.launchUrl("https://smartpack.github.io/PackageManager/general/", this));
 
             mStart.setOnClickListener(v -> {
                 mProgress.setVisibility(View.VISIBLE);

@@ -25,8 +25,9 @@ android {
         minSdkVersion 24
         targetSdk 37
         versionCode 80
-        versionName "v8.0"
+        versionName "v8.0-ar1"
         vectorDrawables.useSupportLibrary = true
+        resConfigs "ar", "en"
         testFunctionalTest = false
         testHandleProfiling = false
     }

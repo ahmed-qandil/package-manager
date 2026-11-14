@@ -66,6 +66,7 @@ public class BatchOptionsAdapter extends RecyclerView.Adapter<BatchOptionsAdapte
             holder.mInfoButton.setVisibility(GONE);
             holder.mCheckBox.setVisibility(VISIBLE);
         }
+        holder.mInfoButton.setContentDescription(holder.mInfoButton.getContext().getString(R.string.status, ""));
         holder.mInfoButton.setOnClickListener(v -> sCommonUtils.toast(holder.mInfoButton.getContext().getString(R.string.status,
                 batchOptionsItems.getStatus() == 0 ? holder.mInfoButton.getContext().getString(R.string.ignored) : holder.mInfoButton.getContext()
                         .getString(R.string.failed)), holder.mInfoButton.getContext()).show());

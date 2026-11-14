@@ -27,16 +27,13 @@ import com.smartpack.packagemanager.utils.AppSettings;
 import com.smartpack.packagemanager.utils.Billing;
 import com.smartpack.packagemanager.utils.RecyclerViewSwipeListener;
 import com.smartpack.packagemanager.utils.Serializables.SettingsItems;
-import com.smartpack.packagemanager.utils.Utils;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import in.sunilpaulmathew.sCommon.CommonUtils.sCommonUtils;
-import in.sunilpaulmathew.sCommon.Credits.sCreditsUtils;
 import in.sunilpaulmathew.sCommon.Dialog.sSingleChoiceDialog;
 import in.sunilpaulmathew.sCommon.ThemeUtils.sThemeUtils;
-import in.sunilpaulmathew.sCommon.TranslatorUtils.sTranslatorUtils;
 
 /*
  * Created by sunilpaulmathew <sunil.kde@gmail.com> on February 10, 2020
@@ -154,26 +151,6 @@ public class SettingsActivity extends BaseActivity {
                         mRecycleViewAdapter.notifyItemChanged(position);
                     }
                 }.show();
-            } else if (settingsItems.getId() == 7) {
-                Billing.showDonateOption(this);
-            } else if (settingsItems.getId() == 8) {
-                new sTranslatorUtils(getString(R.string.app_name), "https://poeditor.com/join/project?hash=0CitpyI1Oc", this).show();
-            } else if (settingsItems.getId() == 9) {
-                Intent share_app = new Intent();
-                share_app.setAction(Intent.ACTION_SEND);
-                share_app.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-                share_app.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_message, Billing.getAppVersion()) + Billing.getPackageExt());
-                share_app.setType("text/plain");
-                Intent shareIntent = Intent.createChooser(share_app, getString(R.string.share_with));
-                startActivity(shareIntent);
-            } else if (settingsItems.getId() == 10) {
-                new sCreditsUtils(AppSettings.getCredits(),
-                        sCommonUtils.getDrawable(R.mipmap.ic_launcher, this),
-                        sCommonUtils.getDrawable(R.drawable.ic_back, this),
-                        Utils.getColor(R.attr.colorPrimary, this),
-                        25, getString(R.string.app_name), getString(R.string.copyright_text),
-                        Billing.getAppVersion()).launchCredits(this
-                );
             }
         }));
 
@@ -192,7 +169,7 @@ public class SettingsActivity extends BaseActivity {
     @SuppressLint("StringFormatInvalid")
     private List<SettingsItems> getData() {
         List <SettingsItems> mData = new CopyOnWriteArrayList<>();
-        mData.add(new SettingsItems(getString(R.string.app_name) + " " + Billing.getAppVersion(), getString(R.string.copyright, getString(R.string.copyright_text)), sCommonUtils.getDrawable(R.mipmap.ic_launcher_round, this), 1));
+        mData.add(new SettingsItems(getString(R.string.app_name) + " " + Billing.getAppVersion(), "", sCommonUtils.getDrawable(R.mipmap.ic_launcher_round, this), 1));
 
         // User interface
         mData.add(new SettingsItems(getString(R.string.user_interface)));
@@ -204,28 +181,6 @@ public class SettingsActivity extends BaseActivity {
         mData.add(new SettingsItems(getString(R.string.exported_apps_name), AppSettings.getExportedAPKName(this), sCommonUtils.getDrawable(R.drawable.ic_pencil, this), 4));
         mData.add(new SettingsItems(getString(R.string.installer_clicking), AppSettings.getInstallerStatus(this), sCommonUtils.getDrawable(R.drawable.ic_install, this), 5));
         mData.add(new SettingsItems(getString(R.string.exiting_app), AppSettings.getExitingStatus(this), sCommonUtils.getDrawable(R.drawable.ic_exit, this), 6));
-
-        // Other
-        mData.add(new SettingsItems(getString(R.string.other)));
-        mData.add(new SettingsItems(getString(R.string.source_code), getString(R.string.source_code_summary), sCommonUtils.getDrawable(
-                R.drawable.ic_github, this), "https://github.com/SmartPack/PackageManager"));
-        mData.add(new SettingsItems(getString(R.string.support), getString(R.string.support_summary), sCommonUtils.getDrawable(R.drawable.ic_support, this),
-                "https://t.me/smartpack_kmanager"));
-        mData.add(new SettingsItems(getString(R.string.report_issue), getString(R.string.report_issue_summary), sCommonUtils.getDrawable(R.drawable.ic_issue, this),
-                "https://github.com/SmartPack/PackageManager/issues/new/choose"));
-        mData.add(new SettingsItems(getString(R.string.support_development), "", sCommonUtils.getDrawable(R.drawable.ic_donate, this), 7));
-        mData.add(new SettingsItems(getString(R.string.more_apps), getString(R.string.more_apps_summary), sCommonUtils.getDrawable(
-                R.drawable.ic_playstore, this), "https://play.google.com/store/apps/dev?id=5836199813143882901"));
-        mData.add(new SettingsItems(getString(R.string.documentation), getString(R.string.documentation_summary), sCommonUtils.getDrawable(
-                R.drawable.ic_book, this), "https://smartpack.github.io/PackageManager/general/"));
-        mData.add(new SettingsItems(getString(R.string.translations), getString(R.string.translations_summary), sCommonUtils.getDrawable(
-                R.drawable.ic_translate, this), 8));
-        mData.add(new SettingsItems(getString(R.string.change_logs), "", sCommonUtils.getDrawable(R.drawable.ic_change_logs, this),
-                "https://smartpack.github.io/PackageManager/changelog/"));
-        mData.add(new SettingsItems(getString(R.string.share_app), getString(R.string.share_app_Summary), sCommonUtils.getDrawable(R.drawable.ic_share, this), 9));
-        mData.add(new SettingsItems(getString(R.string.rate_us), getString(R.string.rate_us_Summary), sCommonUtils.getDrawable(R.drawable.ic_rate, this),
-                "https://play.google.com/store/apps/details?id=com.smartpack.packagemanager" + Billing.getPackageExt()));
-        mData.add(new SettingsItems(getString(R.string.credits), getString(R.string.credits_summary), sCommonUtils.getDrawable(R.drawable.ic_credits, this), 10));
 
         return mData;
     }

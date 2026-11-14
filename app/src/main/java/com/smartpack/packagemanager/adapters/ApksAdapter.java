@@ -113,6 +113,9 @@ public class ApksAdapter extends RecyclerView.Adapter<ApksAdapter.ViewHolder> {
 
         toggleBatchMenu();
 
+        holder.mIcon.setContentDescription(holder.mIcon.getContext().getString(R.string.select) + ": " + holder.mTitle.getText());
+        holder.mCheckBox.setContentDescription(holder.mTitle.getText());
+        holder.mAction.setContentDescription(holder.mAction.getContext().getString(R.string.batch_options_show));
         holder.mIcon.setOnClickListener(v -> {
             int currentPos = holder.getBindingAdapterPosition();
             if (currentPos != RecyclerView.NO_POSITION) {
