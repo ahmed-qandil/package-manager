@@ -26,7 +26,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build unsigned release APK (fdroid flavor)
-        run: ./gradlew assembleFdroidRelease --no-daemon
+        run: ./gradlew assembleFdroidRelease --no-daemon --no-configuration-cache
 
       - name: Verify APK is unsigned
         run: |
