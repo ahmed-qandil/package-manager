@@ -74,7 +74,7 @@ android {
 dependencies {
     api(project(":navView"))
 
-    implementation libs.axml
+    implementation files("libs/aXML-001c28e4c2.aar") // aXML @ commit 001c28e4c2 (jitpack coordinate broken; vendored)
 
     implementation libs.documentfile
 
