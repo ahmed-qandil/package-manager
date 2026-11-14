@@ -30,7 +30,9 @@ jobs:
 
       - name: Verify APK is unsigned
         run: |
-          APK=$(ls app/build/outputs/apk/fdroid/release/app-fdroid-release.apk)
+          APK=$(find app/build/outputs/apk -name "*fdroid*release*.apk" | head -1)
+          echo "APK path: $APK"
+          if [ -z "$APK" ]; then echo "APK not found"; find app/build/outputs/apk -type f; exit 1; fi
           SIGS=$(unzip -l "$APK" | grep -cE 'META-INF/.+\.(RSA|DSA|EC|SF)' || true)
           echo "signature files: $SIGS"
           if [ "$SIGS" -ne 0 ]; then echo "APK is signed - refusing to ship"; exit 1; fi
